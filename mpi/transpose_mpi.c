@@ -18,7 +18,7 @@ transpose(int n, double a[n], double resMpi[n][n], int rank, int nProc)
 {
     size_t i = 0, j, idx;
     double rowMpi[n];
-    MPI_Request request
+    MPI_Request request;
     while (rank + i < n) {
         for (j = 0; j < n; j++)
         {
@@ -114,12 +114,13 @@ int main(int argc, char *argv[])
                     }
                 }
             }
+            MPI_Barrier(MPI_COMM_WORLD);
             AverageTime += MPI_Wtime() - timerMpi;
         }
         AverageTime /= 5.;
 
         if (!rank) {
-            printf("%d\t%d\t%f\n", size[i], nProc, AverageTime);
+            printf("%d,%d,%f\n", size[i], nProc, AverageTime);
         }
     }
     if (!rank) {
