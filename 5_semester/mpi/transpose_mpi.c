@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
     MPI_Comm_size(MPI_COMM_WORLD, &nProc);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-    int size[10] = {1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000}; //10 for check
+    int size[1] = {100}; //10 for check
 
     double timerMpi, AverageTime;
     if (!rank) {
